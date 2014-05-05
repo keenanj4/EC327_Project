@@ -1,55 +1,92 @@
-#include <string>
 #include <iostream>
 #include <fstream>
-#include <time.h>
+#include <cstdlib>
+#include <string> //needed this
+#include <time.h> //and this
 
 using namespace std;
-int number_of_files = 16;
 
-void new_recipe() {
-	int x = number_of_files + 1; //still need to be able to count files
-	ofstream myfile ("recipe17.txt");
-    string str;
-	cout << "Write your Recipe here." << endl;
-	cout << "Hit the Enter key when done." << endl;
-	//cin >> str;
-	cin.ignore();
-    getline( std::cin, str );
-	cout << "You entered: '" << str << "'" << endl;
 
-	if (myfile.is_open())
-  {
-    myfile << str << "\n";
-    myfile.close();
-  }
-}
 
 int main(){
-	cout << "Enter 's' to select random recipe or enter 'n' to make a new one:";
+	ifstream myfile1("num_files.txt");
+	float out;
+	myfile1 >> out;
+	// cout << out << endl;
+	int number_of_files = out;
+	
+	// cout << number_of_files;
+	cout << "Enter 's' to select random recipe or 'n' to enter new recipe:";
 	char start;
 	cin >> start;
+
+
+	// int number_of_files = 4;//this will not stay at 4
+		//find a way to count the files available
+		//or just have it keep guessing until it gets a hit
 	if(start == 's'){
 		srand(time(NULL));
 		string line;
-		int k;
-		int number_of_files = 4;//this will not stay at 4
+		
 		//find a way to count the files available
 		//or just have it keep guessing until it gets a hit
 		char filename[16];
 		sprintf(filename,"recipe%i.txt",rand()%number_of_files + 1);
+		// cout<<filename<<endl;
 
 		ifstream myfile(filename);
 		while (getline(myfile,line)){
 			cout << line << '\n';
 		}
-		
+
 		myfile.close();
 
 	}
 
 	else if (start == 'n'){//for a new recipe
-		new_recipe();
+		
+		ofstream myfile1("num_files.txt");
+		myfile1 << (number_of_files+1);
+
+
+		char filename2[16];
+		sprintf(filename2,"recipe%i.txt",number_of_files+1);
+		
+		ofstream myfile(filename2);
+
+		string line;
+		// string recipe = " ";
+		cout << "Write your Recipe here." << endl;
+		cout << "Type 'END' and hit Enter Key when done." << endl;
+		// cin >> recipe;
+		// while(cin>>recipe){
+
+		// 	myfile << recipe << " ";
+			
+		// 	if(cin.get() == '\n'){
+		// 		myfile << '\n';
+		// 	}
+			
+		// 	if(recipe == "END"){
+		// 		break;
+		// 	}
+		// }
+		cin.ignore();
+		while(getline(cin,line)){
+			myfile << line;
+			if(line == "END"){
+				break;
+			}
+			myfile << '\n';
+		}
+			
+		myfile.close();
+		myfile1.close();
+
 	}
-	system("pause");
+	
+	myfile1.close();
+
 	return 0;
 }
+
