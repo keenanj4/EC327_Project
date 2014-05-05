@@ -14,16 +14,22 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
         home_screen.cpp \
-    chocolate_chip_cookies.cpp \
+    chocolate_chip_cookies_ing.cpp \
+    chocolate_chip_cookies_stp1.cpp
 
 HEADERS  += home_screen.h \
-    chocolate_chip_cookies.h
+    chocolate_chip_cookies_ing.h \
+    chocolate_chip_cookies_stp1.h
 
 FORMS    += home_screen.ui \
-    chocolate_chip_cookies.ui
+    chocolate_chip_cookies_ing.ui \
+    chocolate_chip_cookies_stp1.ui
 
 CONFIG += mobility
 MOBILITY = 
 
-RESOURCES +=
+RESOURCES += \
+    pictures.qrc
+
+OTHER_FILES += C:\Users\Jedidiah\Documents\GitHub\EC327_Project\Cook_Book_App\Images\Chocolate_Chip_Cookies.jpeg
 

@@ -14,6 +14,9 @@ public:
     explicit Chocolate_Chip_Cookies(QWidget *parent = 0);
     ~Chocolate_Chip_Cookies();
 
+private slots:
+    void on_pushButton_clicked();
+
 private:
     Ui::Chocolate_Chip_Cookies *ui;
 };

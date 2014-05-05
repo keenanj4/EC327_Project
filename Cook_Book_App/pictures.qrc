@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/pictures">
+        <file>Chocolate_Chip_Cookies.jpg</file>
+    </qresource>
+</RCC>

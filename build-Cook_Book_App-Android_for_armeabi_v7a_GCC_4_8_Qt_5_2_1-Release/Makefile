@@ -47,13 +47,19 @@ OBJECTS_DIR   = ./
 
 SOURCES       = ..\Cook_Book_App\main.cpp \
 		..\Cook_Book_App\home_screen.cpp \
-		..\Cook_Book_App\chocolate_chip_cookies.cpp moc_home_screen.cpp \
-		moc_chocolate_chip_cookies.cpp
+		..\Cook_Book_App\chocolate_chip_cookies_ing.cpp \
+		..\Cook_Book_App\chocolate_chip_cookies_stp1.cpp qrc_pictures.cpp \
+		moc_home_screen.cpp \
+		moc_chocolate_chip_cookies_ing.cpp \
+		moc_chocolate_chip_cookies_stp1.cpp
 OBJECTS       = main.obj \
 		home_screen.obj \
-		chocolate_chip_cookies.obj \
+		chocolate_chip_cookies_ing.obj \
+		chocolate_chip_cookies_stp1.obj \
+		qrc_pictures.obj \
 		moc_home_screen.obj \
-		moc_chocolate_chip_cookies.obj
+		moc_chocolate_chip_cookies_ing.obj \
+		moc_chocolate_chip_cookies_stp1.obj
 DIST          = ..\..\..\..\..\..\Qt\5.2.1\android_armv7\mkspecs\features\spec_pre.prf \
 		..\..\..\..\..\..\Qt\5.2.1\android_armv7\mkspecs\common\shell-unix.conf \
 		..\..\..\..\..\..\Qt\5.2.1\android_armv7\mkspecs\common\unix.conf \
@@ -148,6 +154,7 @@ DIST          = ..\..\..\..\..\..\Qt\5.2.1\android_armv7\mkspecs\features\spec_p
 		..\..\..\..\..\..\Qt\5.2.1\android_armv7\mkspecs\features\yacc.prf \
 		..\..\..\..\..\..\Qt\5.2.1\android_armv7\mkspecs\features\lex.prf \
 		..\Cook_Book_App\Cook_Book_App.pro \
+		..\Cook_Book_App\pictures.qrc \
 		..\Cook_Book_App\Cook_Book_App.pro
 QMAKE_TARGET  = libCook_Book_App.so
 DESTDIR       = #avoid trailing-slash linebreak
@@ -175,7 +182,7 @@ first: all
 
 all: Makefile $(TARGET)
 
-$(TARGET): ui_home_screen.h ui_chocolate_chip_cookies.h $(OBJECTS)  
+$(TARGET): ui_home_screen.h ui_chocolate_chip_cookies_ing.h ui_chocolate_chip_cookies_stp1.h $(OBJECTS)  
 	$(LINK) $(LFLAGS) -o $(TARGET) $(OBJECTS) $(OBJCOMP) $(LIBS)
 
 Makefile: ..\Cook_Book_App\Cook_Book_App.pro ..\..\..\..\..\..\Qt\5.2.1\android_armv7\mkspecs\android-g++\qmake.conf ..\..\..\..\..\..\Qt\5.2.1\android_armv7\mkspecs\features\spec_pre.prf \
@@ -272,6 +279,7 @@ Makefile: ..\Cook_Book_App\Cook_Book_App.pro ..\..\..\..\..\..\Qt\5.2.1\android_
 		..\..\..\..\..\..\Qt\5.2.1\android_armv7\mkspecs\features\yacc.prf \
 		..\..\..\..\..\..\Qt\5.2.1\android_armv7\mkspecs\features\lex.prf \
 		..\Cook_Book_App\Cook_Book_App.pro \
+		..\Cook_Book_App\pictures.qrc \
 		C:/Qt/5.2.1/android_armv7/lib/libQt5Widgets.prl \
 		C:/Qt/5.2.1/android_armv7/lib/libQt5Gui.prl \
 		C:/Qt/5.2.1/android_armv7/lib/libQt5Core.prl
@@ -370,6 +378,7 @@ Makefile: ..\Cook_Book_App\Cook_Book_App.pro ..\..\..\..\..\..\Qt\5.2.1\android_
 ..\..\..\..\..\..\Qt\5.2.1\android_armv7\mkspecs\features\yacc.prf:
 ..\..\..\..\..\..\Qt\5.2.1\android_armv7\mkspecs\features\lex.prf:
 ..\Cook_Book_App\Cook_Book_App.pro:
+..\Cook_Book_App\pictures.qrc:
 C:/Qt/5.2.1/android_armv7/lib/libQt5Widgets.prl:
 C:/Qt/5.2.1/android_armv7/lib/libQt5Gui.prl:
 C:/Qt/5.2.1/android_armv7/lib/libQt5Core.prl:
@@ -380,7 +389,7 @@ qmake_all: FORCE
 
 dist: 
 	@if not exist .tmp\libCook_Book_App.so1.0.0 mkdir .tmp\libCook_Book_App.so1.0.0 & if not exist .tmp\libCook_Book_App.so1.0.0 exit 1
-	$(COPY_FILE) --parents $(SOURCES) $(DIST) .tmp\libCook_Book_App.so1.0.0\ && $(COPY_FILE) --parents ..\Cook_Book_App\home_screen.h ..\Cook_Book_App\chocolate_chip_cookies.h .tmp\libCook_Book_App.so1.0.0\ && $(COPY_FILE) --parents ..\Cook_Book_App\main.cpp ..\Cook_Book_App\home_screen.cpp ..\Cook_Book_App\chocolate_chip_cookies.cpp .tmp\libCook_Book_App.so1.0.0\ && $(COPY_FILE) --parents ..\Cook_Book_App\home_screen.ui ..\Cook_Book_App\chocolate_chip_cookies.ui .tmp\libCook_Book_App.so1.0.0\ && (cd `dirname .tmp\libCook_Book_App.so1.0.0` && $(TAR) libCook_Book_App.so1.0.0.tar libCook_Book_App.so1.0.0 && $(COMPRESS) libCook_Book_App.so1.0.0.tar) && $(MOVE) `dirname .tmp\libCook_Book_App.so1.0.0`\libCook_Book_App.so1.0.0.tar.gz . && $(DEL_FILE) -r .tmp\libCook_Book_App.so1.0.0
+	$(COPY_FILE) --parents $(SOURCES) $(DIST) .tmp\libCook_Book_App.so1.0.0\ && $(COPY_FILE) --parents ..\Cook_Book_App\pictures.qrc .tmp\libCook_Book_App.so1.0.0\ && $(COPY_FILE) --parents ..\Cook_Book_App\home_screen.h ..\Cook_Book_App\chocolate_chip_cookies_ing.h ..\Cook_Book_App\chocolate_chip_cookies_stp1.h .tmp\libCook_Book_App.so1.0.0\ && $(COPY_FILE) --parents ..\Cook_Book_App\main.cpp ..\Cook_Book_App\home_screen.cpp ..\Cook_Book_App\chocolate_chip_cookies_ing.cpp ..\Cook_Book_App\chocolate_chip_cookies_stp1.cpp .tmp\libCook_Book_App.so1.0.0\ && $(COPY_FILE) --parents ..\Cook_Book_App\home_screen.ui ..\Cook_Book_App\chocolate_chip_cookies_ing.ui ..\Cook_Book_App\chocolate_chip_cookies_stp1.ui .tmp\libCook_Book_App.so1.0.0\ && (cd `dirname .tmp\libCook_Book_App.so1.0.0` && $(TAR) libCook_Book_App.so1.0.0.tar libCook_Book_App.so1.0.0 && $(COMPRESS) libCook_Book_App.so1.0.0.tar) && $(MOVE) `dirname .tmp\libCook_Book_App.so1.0.0`\libCook_Book_App.so1.0.0.tar.gz . && $(DEL_FILE) -r .tmp\libCook_Book_App.so1.0.0
 
 
 clean:compiler_clean 
@@ -401,11 +410,16 @@ mocables: compiler_moc_header_make_all compiler_moc_source_make_all
 
 check: first
 
-compiler_rcc_make_all:
+compiler_rcc_make_all: qrc_pictures.cpp
 compiler_rcc_clean:
-compiler_moc_header_make_all: moc_home_screen.cpp moc_chocolate_chip_cookies.cpp
+	-$(DEL_FILE) qrc_pictures.cpp
+qrc_pictures.cpp: ..\Cook_Book_App\pictures.qrc \
+		..\Cook_Book_App\Chocolate_Chip_Cookies.jpg
+	C:\Qt\5.2.1\android_armv7\bin\rcc.exe -name pictures ..\Cook_Book_App\pictures.qrc -o qrc_pictures.cpp
+
+compiler_moc_header_make_all: moc_home_screen.cpp moc_chocolate_chip_cookies_ing.cpp moc_chocolate_chip_cookies_stp1.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_home_screen.cpp moc_chocolate_chip_cookies.cpp
+	-$(DEL_FILE) moc_home_screen.cpp moc_chocolate_chip_cookies_ing.cpp moc_chocolate_chip_cookies_stp1.cpp
 moc_home_screen.cpp: ..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtWidgets\QMainWindow \
 		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtWidgets\qmainwindow.h \
 		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtWidgets\qwidget.h \
@@ -820,7 +834,7 @@ moc_home_screen.cpp: ..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtWidgets\
 		..\..\..\..\..\..\Qt\5.2.1\android_armv7\bin\moc.exe
 	C:\Qt\\5.2.1\android_armv7\bin\moc.exe $(DEFINES) $(INCPATH) -I/usr/include -I/usr/local/include ..\Cook_Book_App\home_screen.h -o moc_home_screen.cpp
 
-moc_chocolate_chip_cookies.cpp: ..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtWidgets\QDialog \
+moc_chocolate_chip_cookies_ing.cpp: ..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtWidgets\QDialog \
 		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtWidgets\qdialog.h \
 		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtWidgets\qwidget.h \
 		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtGui\qwindowdefs.h \
@@ -1228,20 +1242,435 @@ moc_chocolate_chip_cookies.cpp: ..\..\..\..\..\..\Qt\5.2.1\android_armv7\include
 		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qfiledevice.h \
 		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtGui\qvector2d.h \
 		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtGui\qtouchdevice.h \
-		..\Cook_Book_App\chocolate_chip_cookies.h \
+		..\Cook_Book_App\chocolate_chip_cookies_ing.h \
 		..\..\..\..\..\..\Qt\5.2.1\android_armv7\bin\moc.exe
-	C:\Qt\\5.2.1\android_armv7\bin\moc.exe $(DEFINES) $(INCPATH) -I/usr/include -I/usr/local/include ..\Cook_Book_App\chocolate_chip_cookies.h -o moc_chocolate_chip_cookies.cpp
+	C:\Qt\\5.2.1\android_armv7\bin\moc.exe $(DEFINES) $(INCPATH) -I/usr/include -I/usr/local/include ..\Cook_Book_App\chocolate_chip_cookies_ing.h -o moc_chocolate_chip_cookies_ing.cpp
+
+moc_chocolate_chip_cookies_stp1.cpp: ..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtWidgets\QDialog \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtWidgets\qdialog.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtWidgets\qwidget.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtGui\qwindowdefs.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qglobal.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qconfig.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qfeatures.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qsystemdetection.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qprocessordetection.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qcompilerdetection.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\utility \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\libs\armeabi-v7a\include\bits\c++config.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\libs\armeabi-v7a\include\bits\os_defines.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\libs\armeabi-v7a\include\bits\cpu_defines.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\bits\stl_relops.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\bits\stl_pair.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\bits\move.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\bits\concept_check.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\bits\boost_concept_check.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\bits\stl_iterator_base_types.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\type_traits \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\bits\c++0x_warning.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\initializer_list \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\algorithm \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\bits\stl_algobase.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\bits\functexcept.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\bits\exception_defines.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\bits\cpp_type_traits.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\ext\type_traits.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\ext\numeric_traits.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\bits\stl_iterator_base_funcs.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\debug\debug.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\debug\macros.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\debug\functions.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\debug\formatter.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\typeinfo \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\exception \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\bits\atomic_lockfree_defines.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\bits\exception_ptr.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\bits\nested_exception.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\bits\hash_bytes.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\bits\stl_iterator.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\parallel\algobase.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\parallel\base.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\bits\stl_function.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\backward\binders.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\parallel\features.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\parallel\basic_iterator.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\parallel\parallel.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\parallel\compiletime_settings.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\cstdio \
+		..\..\..\..\..\..\Android\AndroidNDK\platforms\android-9\arch-arm\usr\include\stdio.h \
+		..\..\..\..\..\..\Android\AndroidNDK\platforms\android-9\arch-arm\usr\include\sys\cdefs.h \
+		..\..\..\..\..\..\Android\AndroidNDK\platforms\android-9\arch-arm\usr\include\sys\cdefs_elf.h \
+		..\..\..\..\..\..\Android\AndroidNDK\platforms\android-9\arch-arm\usr\include\android\api-level.h \
+		..\..\..\..\..\..\Android\AndroidNDK\platforms\android-9\arch-arm\usr\include\sys\types.h \
+		..\..\..\..\..\..\Android\AndroidNDK\platforms\android-9\arch-arm\usr\include\stdint.h \
+		..\..\..\..\..\..\Android\AndroidNDK\platforms\android-9\arch-arm\usr\include\sys\_types.h \
+		..\..\..\..\..\..\Android\AndroidNDK\platforms\android-9\arch-arm\usr\include\machine\_types.h \
+		..\..\..\..\..\..\Android\AndroidNDK\platforms\android-9\arch-arm\usr\include\sys\_wchar_limits.h \
+		..\..\..\..\..\..\Android\AndroidNDK\platforms\android-9\arch-arm\usr\include\linux\posix_types.h \
+		..\..\..\..\..\..\Android\AndroidNDK\platforms\android-9\arch-arm\usr\include\linux\stddef.h \
+		..\..\..\..\..\..\Android\AndroidNDK\platforms\android-9\arch-arm\usr\include\linux\compiler.h \
+		..\..\..\..\..\..\Android\AndroidNDK\platforms\android-9\arch-arm\usr\include\asm\posix_types.h \
+		..\..\..\..\..\..\Android\AndroidNDK\platforms\android-9\arch-arm\usr\include\asm\types.h \
+		..\..\..\..\..\..\Android\AndroidNDK\platforms\android-9\arch-arm\usr\include\linux\types.h \
+		..\..\..\..\..\..\Android\AndroidNDK\platforms\android-9\arch-arm\usr\include\machine\kernel.h \
+		..\..\..\..\..\..\Android\AndroidNDK\platforms\android-9\arch-arm\usr\include\sys\sysmacros.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\parallel\types.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\cstdlib \
+		..\..\..\..\..\..\Android\AndroidNDK\platforms\android-9\arch-arm\usr\include\stdlib.h \
+		..\..\..\..\..\..\Android\AndroidNDK\platforms\android-9\arch-arm\usr\include\string.h \
+		..\..\..\..\..\..\Android\AndroidNDK\platforms\android-9\arch-arm\usr\include\malloc.h \
+		..\..\..\..\..\..\Android\AndroidNDK\platforms\android-9\arch-arm\usr\include\alloca.h \
+		..\..\..\..\..\..\Android\AndroidNDK\platforms\android-9\arch-arm\usr\include\strings.h \
+		..\..\..\..\..\..\Android\AndroidNDK\platforms\android-9\arch-arm\usr\include\memory.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\limits \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\tr1\cstdint \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\parallel\tags.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\parallel\settings.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\parallel\algorithmfwd.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\parallel\find.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\parallel\compatibility.h \
+		..\..\..\..\..\..\Android\AndroidNDK\platforms\android-9\arch-arm\usr\include\sched.h \
+		..\..\..\..\..\..\Android\AndroidNDK\platforms\android-9\arch-arm\usr\include\sys\time.h \
+		..\..\..\..\..\..\Android\AndroidNDK\platforms\android-9\arch-arm\usr\include\linux\time.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\parallel\equally_split.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\parallel\find_selectors.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\bits\stl_algo.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\bits\algorithmfwd.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\bits\stl_heap.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\bits\stl_tempbuf.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\bits\stl_construct.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\new \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\ext\alloc_traits.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\bits\alloc_traits.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\bits\memoryfwd.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\bits\ptr_traits.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\bits\allocator.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\libs\armeabi-v7a\include\bits\c++allocator.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\ext\new_allocator.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\random \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\cmath \
+		..\..\..\..\..\..\Android\AndroidNDK\platforms\android-9\arch-arm\usr\include\math.h \
+		..\..\..\..\..\..\Android\AndroidNDK\platforms\android-9\arch-arm\usr\include\limits.h \
+		..\..\..\..\..\..\Android\AndroidNDK\platforms\android-9\arch-arm\usr\include\sys\limits.h \
+		..\..\..\..\..\..\Android\AndroidNDK\platforms\android-9\arch-arm\usr\include\linux\limits.h \
+		..\..\..\..\..\..\Android\AndroidNDK\platforms\android-9\arch-arm\usr\include\machine\internal_types.h \
+		..\..\..\..\..\..\Android\AndroidNDK\platforms\android-9\arch-arm\usr\include\machine\limits.h \
+		..\..\..\..\..\..\Android\AndroidNDK\platforms\android-9\arch-arm\usr\include\sys\syslimits.h \
+		..\..\..\..\..\..\Android\AndroidNDK\platforms\android-9\arch-arm\usr\include\asm\page.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\string \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\bits\stringfwd.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\bits\char_traits.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\bits\postypes.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\cwchar \
+		..\..\..\..\..\..\Android\AndroidNDK\platforms\android-9\arch-arm\usr\include\wchar.h \
+		..\..\..\..\..\..\Android\AndroidNDK\platforms\android-9\arch-arm\usr\include\time.h \
+		..\..\..\..\..\..\Android\AndroidNDK\platforms\android-9\arch-arm\usr\include\asm\siginfo.h \
+		..\..\..\..\..\..\Android\AndroidNDK\platforms\android-9\arch-arm\usr\include\asm-generic\siginfo.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\cstdint \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\bits\localefwd.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\libs\armeabi-v7a\include\bits\c++locale.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\clocale \
+		..\..\..\..\..\..\Android\AndroidNDK\platforms\android-9\arch-arm\usr\include\locale.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\iosfwd \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\cctype \
+		..\..\..\..\..\..\Android\AndroidNDK\platforms\android-9\arch-arm\usr\include\ctype.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\bits\ostream_insert.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\bits\cxxabi_forced.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\bits\range_access.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\bits\basic_string.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\ext\atomicity.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\libs\armeabi-v7a\include\bits\gthr.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\libs\armeabi-v7a\include\bits\gthr-default.h \
+		..\..\..\..\..\..\Android\AndroidNDK\platforms\android-9\arch-arm\usr\include\pthread.h \
+		..\..\..\..\..\..\Android\AndroidNDK\platforms\android-9\arch-arm\usr\include\signal.h \
+		..\..\..\..\..\..\Android\AndroidNDK\platforms\android-9\arch-arm\usr\include\asm\signal.h \
+		..\..\..\..\..\..\Android\AndroidNDK\platforms\android-9\arch-arm\usr\include\asm-generic\signal.h \
+		..\..\..\..\..\..\Android\AndroidNDK\platforms\android-9\arch-arm\usr\include\asm\sigcontext.h \
+		..\..\..\..\..\..\Android\AndroidNDK\platforms\android-9\arch-arm\usr\include\unistd.h \
+		..\..\..\..\..\..\Android\AndroidNDK\platforms\android-9\arch-arm\usr\include\sys\select.h \
+		..\..\..\..\..\..\Android\AndroidNDK\platforms\android-9\arch-arm\usr\include\sys\sysconf.h \
+		..\..\..\..\..\..\Android\AndroidNDK\platforms\android-9\arch-arm\usr\include\linux\capability.h \
+		..\..\..\..\..\..\Android\AndroidNDK\platforms\android-9\arch-arm\usr\include\pathconf.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\libs\armeabi-v7a\include\bits\atomic_word.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\ext\string_conversions.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\cerrno \
+		..\..\..\..\..\..\Android\AndroidNDK\platforms\android-9\arch-arm\usr\include\errno.h \
+		..\..\..\..\..\..\Android\AndroidNDK\platforms\android-9\arch-arm\usr\include\linux\errno.h \
+		..\..\..\..\..\..\Android\AndroidNDK\platforms\android-9\arch-arm\usr\include\asm\errno.h \
+		..\..\..\..\..\..\Android\AndroidNDK\platforms\android-9\arch-arm\usr\include\asm-generic\errno.h \
+		..\..\..\..\..\..\Android\AndroidNDK\platforms\android-9\arch-arm\usr\include\asm-generic\errno-base.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\bits\functional_hash.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\bits\basic_string.tcc \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\bits\random.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\vector \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\bits\stl_uninitialized.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\bits\stl_vector.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\bits\stl_bvector.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\bits\vector.tcc \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\debug\vector \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\debug\safe_sequence.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\debug\safe_base.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\ext\concurrence.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\debug\safe_sequence.tcc \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\debug\safe_iterator.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\debug\safe_iterator.tcc \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\profile\vector \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\profile\base.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\functional \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\tuple \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\array \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\stdexcept \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\debug\array \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\profile\array \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\bits\uses_allocator.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\profile\impl\profiler.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\profile\impl\profiler_hash_func.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\profile\impl\profiler_node.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\profile\impl\profiler_trace.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\unordered_map \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\bits\hashtable.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\bits\hashtable_policy.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\bits\unordered_map.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\debug\unordered_map \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\debug\safe_unordered_container.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\debug\safe_unordered_base.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\debug\safe_unordered_container.tcc \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\debug\safe_local_iterator.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\debug\safe_local_iterator.tcc \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\profile\unordered_map \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\profile\unordered_base.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\tr1\unordered_map \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\tr1\type_traits \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\tr1\functional_hash.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\tr1\hashtable.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\tr1\hashtable_policy.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\tr1\unordered_map.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\fstream \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\istream \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\ios \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\bits\ios_base.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\bits\locale_classes.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\bits\locale_classes.tcc \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\streambuf \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\bits\streambuf.tcc \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\bits\basic_ios.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\bits\locale_facets.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\cwctype \
+		..\..\..\..\..\..\Android\AndroidNDK\platforms\android-9\arch-arm\usr\include\wctype.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\libs\armeabi-v7a\include\bits\ctype_base.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\bits\streambuf_iterator.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\libs\armeabi-v7a\include\bits\ctype_inline.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\bits\locale_facets.tcc \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\bits\basic_ios.tcc \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\ostream \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\bits\ostream.tcc \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\bits\istream.tcc \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\bits\codecvt.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\libs\armeabi-v7a\include\bits\basic_file.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\libs\armeabi-v7a\include\bits\c++io.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\bits\fstream.tcc \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\profile\impl\profiler_algos.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\profile\impl\profiler_state.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\profile\impl\profiler_hashtable_size.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\profile\impl\profiler_container_size.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\sstream \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\bits\sstream.tcc \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\profile\impl\profiler_map_to_unordered_map.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\profile\impl\profiler_vector_size.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\profile\impl\profiler_vector_to_list.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\profile\impl\profiler_list_to_slist.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\profile\impl\profiler_list_to_vector.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\profile\iterator_tracker.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\bits\opt_random.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\bits\random.tcc \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\numeric \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\bits\stl_numeric.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\parallel\numeric \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\parallel\numericfwd.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\parallel\iterator.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\parallel\for_each.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\parallel\par_loop.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\parallel\omp_loop.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\parallel\workstealing.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\parallel\random_number.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\tr1\random \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\tr1\cmath \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\tr1\gamma.tcc \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\tr1\special_function_util.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\tr1\bessel_function.tcc \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\tr1\beta_function.tcc \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\tr1\ell_integral.tcc \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\tr1\exp_integral.tcc \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\tr1\hypergeometric.tcc \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\tr1\legendre_function.tcc \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\tr1\modified_bessel_func.tcc \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\tr1\poly_hermite.tcc \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\tr1\poly_laguerre.tcc \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\tr1\riemann_zeta.tcc \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\tr1\random.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\tr1\random.tcc \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\parallel\for_each_selectors.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\parallel\partial_sum.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\parallel\algorithm \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\parallel\algo.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\parallel\sort.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\parallel\checkers.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\parallel\multiway_mergesort.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\parallel\multiway_merge.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\parallel\losertree.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\parallel\multiseq_selection.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\queue \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\deque \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\bits\stl_deque.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\bits\deque.tcc \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\debug\deque \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\profile\deque \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\bits\stl_queue.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\parallel\quicksort.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\parallel\partition.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\parallel\balanced_quicksort.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\parallel\queue.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\parallel\omp_loop_static.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\parallel\search.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\parallel\random_shuffle.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\parallel\merge.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\parallel\unique_copy.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\parallel\set_operations.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qglobalstatic.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qatomic.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qbasicatomic.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qatomic_bootstrap.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qgenericatomic.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qatomic_msvc.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qatomic_integrity.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qoldbasicatomic.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qatomic_vxworks.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qatomic_power.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qatomic_alpha.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qatomic_armv7.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qatomic_armv6.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qatomic_armv5.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qatomic_bfin.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qatomic_ia64.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qatomic_mips.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qatomic_s390.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qatomic_sh4a.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qatomic_sparc.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qatomic_x86.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qatomic_cxx11.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\atomic \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\bits\atomic_base.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qatomic_gcc.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qatomic_unix.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qmutex.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qlogging.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qflags.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qtypeinfo.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qtypetraits.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qsysinfo.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qobjectdefs.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qnamespace.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qobjectdefs_impl.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtGui\qwindowdefs_win.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qobject.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qstring.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qchar.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qbytearray.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qrefcount.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qarraydata.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qstringbuilder.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qlist.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qalgorithms.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qiterator.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\iterator \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\bits\stream_iterator.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\list \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\bits\stl_list.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\bits\list.tcc \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\debug\list \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\profile\list \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qcoreevent.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qscopedpointer.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qmetatype.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qvarlengtharray.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qcontainerfwd.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qisenum.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\map \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\bits\stl_tree.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\bits\stl_map.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\bits\stl_multimap.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\debug\map \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\debug\map.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\debug\multimap.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\profile\map \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\profile\map.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\profile\multimap.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qobject_impl.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qmargins.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qrect.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qsize.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qpoint.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtGui\qpaintdevice.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtGui\qpalette.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtGui\qcolor.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtGui\qrgb.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qstringlist.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qdatastream.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qiodevice.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qpair.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qregexp.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qstringmatcher.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtGui\qbrush.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qvector.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtGui\qmatrix.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtGui\qpolygon.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtGui\qregion.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qline.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtGui\qtransform.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtGui\qpainterpath.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtGui\qimage.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtGui\qpixmap.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qsharedpointer.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qshareddata.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qsharedpointer_impl.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qhash.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtGui\qfont.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtGui\qfontmetrics.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtGui\qfontinfo.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtWidgets\qsizepolicy.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtGui\qcursor.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtGui\qkeysequence.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtGui\qevent.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qvariant.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qmap.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qdebug.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qtextstream.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qlocale.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qset.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qcontiguouscache.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qurl.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qurlquery.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qfile.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qfiledevice.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtGui\qvector2d.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtGui\qtouchdevice.h \
+		..\Cook_Book_App\chocolate_chip_cookies_stp1.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\bin\moc.exe
+	C:\Qt\\5.2.1\android_armv7\bin\moc.exe $(DEFINES) $(INCPATH) -I/usr/include -I/usr/local/include ..\Cook_Book_App\chocolate_chip_cookies_stp1.h -o moc_chocolate_chip_cookies_stp1.cpp
 
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
-compiler_uic_make_all: ui_home_screen.h ui_chocolate_chip_cookies.h
+compiler_uic_make_all: ui_home_screen.h ui_chocolate_chip_cookies_ing.h ui_chocolate_chip_cookies_stp1.h
 compiler_uic_clean:
-	-$(DEL_FILE) ui_home_screen.h ui_chocolate_chip_cookies.h
+	-$(DEL_FILE) ui_home_screen.h ui_chocolate_chip_cookies_ing.h ui_chocolate_chip_cookies_stp1.h
 ui_home_screen.h: ..\Cook_Book_App\home_screen.ui
 	C:\Qt\5.2.1\android_armv7\bin\uic.exe ..\Cook_Book_App\home_screen.ui -o ui_home_screen.h
 
-ui_chocolate_chip_cookies.h: ..\Cook_Book_App\chocolate_chip_cookies.ui
-	C:\Qt\5.2.1\android_armv7\bin\uic.exe ..\Cook_Book_App\chocolate_chip_cookies.ui -o ui_chocolate_chip_cookies.h
+ui_chocolate_chip_cookies_ing.h: ..\Cook_Book_App\chocolate_chip_cookies_ing.ui
+	C:\Qt\5.2.1\android_armv7\bin\uic.exe ..\Cook_Book_App\chocolate_chip_cookies_ing.ui -o ui_chocolate_chip_cookies_ing.h
+
+ui_chocolate_chip_cookies_stp1.h: ..\Cook_Book_App\chocolate_chip_cookies_stp1.ui
+	C:\Qt\5.2.1\android_armv7\bin\uic.exe ..\Cook_Book_App\chocolate_chip_cookies_stp1.ui -o ui_chocolate_chip_cookies_stp1.h
 
 compiler_yacc_decl_make_all:
 compiler_yacc_decl_clean:
@@ -1249,7 +1678,7 @@ compiler_yacc_impl_make_all:
 compiler_yacc_impl_clean:
 compiler_lex_make_all:
 compiler_lex_clean:
-compiler_clean: compiler_moc_header_clean compiler_uic_clean 
+compiler_clean: compiler_rcc_clean compiler_moc_header_clean compiler_uic_clean 
 
 ####### Compile
 
@@ -2121,12 +2550,470 @@ home_screen.obj: ..\Cook_Book_App\home_screen.cpp ..\Cook_Book_App\home_screen.h
 		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtWidgets\qpushbutton.h \
 		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtWidgets\qabstractbutton.h \
 		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtWidgets\QWidget \
-		..\Cook_Book_App\chocolate_chip_cookies.h \
+		..\Cook_Book_App\chocolate_chip_cookies_ing.h \
 		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtWidgets\QDialog \
 		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtWidgets\qdialog.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o home_screen.obj ..\Cook_Book_App\home_screen.cpp
 
-chocolate_chip_cookies.obj: ..\Cook_Book_App\chocolate_chip_cookies.cpp ..\Cook_Book_App\chocolate_chip_cookies.h \
+chocolate_chip_cookies_ing.obj: ..\Cook_Book_App\chocolate_chip_cookies_ing.cpp ..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtGui\QPixmap \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtGui\qpixmap.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtGui\qpaintdevice.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtGui\qwindowdefs.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qglobal.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qconfig.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qfeatures.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qsystemdetection.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qprocessordetection.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qcompilerdetection.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\utility \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\libs\armeabi-v7a\include\bits\c++config.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\libs\armeabi-v7a\include\bits\os_defines.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\libs\armeabi-v7a\include\bits\cpu_defines.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\bits\stl_relops.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\bits\stl_pair.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\bits\move.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\bits\concept_check.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\bits\boost_concept_check.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\bits\stl_iterator_base_types.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\type_traits \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\bits\c++0x_warning.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\initializer_list \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\algorithm \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\bits\stl_algobase.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\bits\functexcept.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\bits\exception_defines.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\bits\cpp_type_traits.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\ext\type_traits.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\ext\numeric_traits.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\bits\stl_iterator_base_funcs.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\debug\debug.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\debug\macros.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\debug\functions.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\debug\formatter.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\typeinfo \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\exception \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\bits\atomic_lockfree_defines.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\bits\exception_ptr.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\bits\nested_exception.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\bits\hash_bytes.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\bits\stl_iterator.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\parallel\algobase.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\parallel\base.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\bits\stl_function.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\backward\binders.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\parallel\features.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\parallel\basic_iterator.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\parallel\parallel.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\parallel\compiletime_settings.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\cstdio \
+		..\..\..\..\..\..\Android\AndroidNDK\platforms\android-9\arch-arm\usr\include\stdio.h \
+		..\..\..\..\..\..\Android\AndroidNDK\platforms\android-9\arch-arm\usr\include\sys\cdefs.h \
+		..\..\..\..\..\..\Android\AndroidNDK\platforms\android-9\arch-arm\usr\include\sys\cdefs_elf.h \
+		..\..\..\..\..\..\Android\AndroidNDK\platforms\android-9\arch-arm\usr\include\android\api-level.h \
+		..\..\..\..\..\..\Android\AndroidNDK\platforms\android-9\arch-arm\usr\include\sys\types.h \
+		..\..\..\..\..\..\Android\AndroidNDK\platforms\android-9\arch-arm\usr\include\stdint.h \
+		..\..\..\..\..\..\Android\AndroidNDK\platforms\android-9\arch-arm\usr\include\sys\_types.h \
+		..\..\..\..\..\..\Android\AndroidNDK\platforms\android-9\arch-arm\usr\include\machine\_types.h \
+		..\..\..\..\..\..\Android\AndroidNDK\platforms\android-9\arch-arm\usr\include\sys\_wchar_limits.h \
+		..\..\..\..\..\..\Android\AndroidNDK\platforms\android-9\arch-arm\usr\include\linux\posix_types.h \
+		..\..\..\..\..\..\Android\AndroidNDK\platforms\android-9\arch-arm\usr\include\linux\stddef.h \
+		..\..\..\..\..\..\Android\AndroidNDK\platforms\android-9\arch-arm\usr\include\linux\compiler.h \
+		..\..\..\..\..\..\Android\AndroidNDK\platforms\android-9\arch-arm\usr\include\asm\posix_types.h \
+		..\..\..\..\..\..\Android\AndroidNDK\platforms\android-9\arch-arm\usr\include\asm\types.h \
+		..\..\..\..\..\..\Android\AndroidNDK\platforms\android-9\arch-arm\usr\include\linux\types.h \
+		..\..\..\..\..\..\Android\AndroidNDK\platforms\android-9\arch-arm\usr\include\machine\kernel.h \
+		..\..\..\..\..\..\Android\AndroidNDK\platforms\android-9\arch-arm\usr\include\sys\sysmacros.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\parallel\types.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\cstdlib \
+		..\..\..\..\..\..\Android\AndroidNDK\platforms\android-9\arch-arm\usr\include\stdlib.h \
+		..\..\..\..\..\..\Android\AndroidNDK\platforms\android-9\arch-arm\usr\include\string.h \
+		..\..\..\..\..\..\Android\AndroidNDK\platforms\android-9\arch-arm\usr\include\malloc.h \
+		..\..\..\..\..\..\Android\AndroidNDK\platforms\android-9\arch-arm\usr\include\alloca.h \
+		..\..\..\..\..\..\Android\AndroidNDK\platforms\android-9\arch-arm\usr\include\strings.h \
+		..\..\..\..\..\..\Android\AndroidNDK\platforms\android-9\arch-arm\usr\include\memory.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\limits \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\tr1\cstdint \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\parallel\tags.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\parallel\settings.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\parallel\algorithmfwd.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\parallel\find.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\parallel\compatibility.h \
+		..\..\..\..\..\..\Android\AndroidNDK\platforms\android-9\arch-arm\usr\include\sched.h \
+		..\..\..\..\..\..\Android\AndroidNDK\platforms\android-9\arch-arm\usr\include\sys\time.h \
+		..\..\..\..\..\..\Android\AndroidNDK\platforms\android-9\arch-arm\usr\include\linux\time.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\parallel\equally_split.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\parallel\find_selectors.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\bits\stl_algo.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\bits\algorithmfwd.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\bits\stl_heap.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\bits\stl_tempbuf.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\bits\stl_construct.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\new \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\ext\alloc_traits.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\bits\alloc_traits.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\bits\memoryfwd.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\bits\ptr_traits.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\bits\allocator.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\libs\armeabi-v7a\include\bits\c++allocator.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\ext\new_allocator.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\random \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\cmath \
+		..\..\..\..\..\..\Android\AndroidNDK\platforms\android-9\arch-arm\usr\include\math.h \
+		..\..\..\..\..\..\Android\AndroidNDK\platforms\android-9\arch-arm\usr\include\limits.h \
+		..\..\..\..\..\..\Android\AndroidNDK\platforms\android-9\arch-arm\usr\include\sys\limits.h \
+		..\..\..\..\..\..\Android\AndroidNDK\platforms\android-9\arch-arm\usr\include\linux\limits.h \
+		..\..\..\..\..\..\Android\AndroidNDK\platforms\android-9\arch-arm\usr\include\machine\internal_types.h \
+		..\..\..\..\..\..\Android\AndroidNDK\platforms\android-9\arch-arm\usr\include\machine\limits.h \
+		..\..\..\..\..\..\Android\AndroidNDK\platforms\android-9\arch-arm\usr\include\sys\syslimits.h \
+		..\..\..\..\..\..\Android\AndroidNDK\platforms\android-9\arch-arm\usr\include\asm\page.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\string \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\bits\stringfwd.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\bits\char_traits.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\bits\postypes.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\cwchar \
+		..\..\..\..\..\..\Android\AndroidNDK\platforms\android-9\arch-arm\usr\include\wchar.h \
+		..\..\..\..\..\..\Android\AndroidNDK\platforms\android-9\arch-arm\usr\include\time.h \
+		..\..\..\..\..\..\Android\AndroidNDK\platforms\android-9\arch-arm\usr\include\asm\siginfo.h \
+		..\..\..\..\..\..\Android\AndroidNDK\platforms\android-9\arch-arm\usr\include\asm-generic\siginfo.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\cstdint \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\bits\localefwd.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\libs\armeabi-v7a\include\bits\c++locale.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\clocale \
+		..\..\..\..\..\..\Android\AndroidNDK\platforms\android-9\arch-arm\usr\include\locale.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\iosfwd \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\cctype \
+		..\..\..\..\..\..\Android\AndroidNDK\platforms\android-9\arch-arm\usr\include\ctype.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\bits\ostream_insert.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\bits\cxxabi_forced.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\bits\range_access.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\bits\basic_string.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\ext\atomicity.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\libs\armeabi-v7a\include\bits\gthr.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\libs\armeabi-v7a\include\bits\gthr-default.h \
+		..\..\..\..\..\..\Android\AndroidNDK\platforms\android-9\arch-arm\usr\include\pthread.h \
+		..\..\..\..\..\..\Android\AndroidNDK\platforms\android-9\arch-arm\usr\include\signal.h \
+		..\..\..\..\..\..\Android\AndroidNDK\platforms\android-9\arch-arm\usr\include\asm\signal.h \
+		..\..\..\..\..\..\Android\AndroidNDK\platforms\android-9\arch-arm\usr\include\asm-generic\signal.h \
+		..\..\..\..\..\..\Android\AndroidNDK\platforms\android-9\arch-arm\usr\include\asm\sigcontext.h \
+		..\..\..\..\..\..\Android\AndroidNDK\platforms\android-9\arch-arm\usr\include\unistd.h \
+		..\..\..\..\..\..\Android\AndroidNDK\platforms\android-9\arch-arm\usr\include\sys\select.h \
+		..\..\..\..\..\..\Android\AndroidNDK\platforms\android-9\arch-arm\usr\include\sys\sysconf.h \
+		..\..\..\..\..\..\Android\AndroidNDK\platforms\android-9\arch-arm\usr\include\linux\capability.h \
+		..\..\..\..\..\..\Android\AndroidNDK\platforms\android-9\arch-arm\usr\include\pathconf.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\libs\armeabi-v7a\include\bits\atomic_word.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\ext\string_conversions.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\cerrno \
+		..\..\..\..\..\..\Android\AndroidNDK\platforms\android-9\arch-arm\usr\include\errno.h \
+		..\..\..\..\..\..\Android\AndroidNDK\platforms\android-9\arch-arm\usr\include\linux\errno.h \
+		..\..\..\..\..\..\Android\AndroidNDK\platforms\android-9\arch-arm\usr\include\asm\errno.h \
+		..\..\..\..\..\..\Android\AndroidNDK\platforms\android-9\arch-arm\usr\include\asm-generic\errno.h \
+		..\..\..\..\..\..\Android\AndroidNDK\platforms\android-9\arch-arm\usr\include\asm-generic\errno-base.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\bits\functional_hash.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\bits\basic_string.tcc \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\bits\random.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\vector \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\bits\stl_uninitialized.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\bits\stl_vector.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\bits\stl_bvector.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\bits\vector.tcc \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\debug\vector \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\debug\safe_sequence.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\debug\safe_base.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\ext\concurrence.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\debug\safe_sequence.tcc \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\debug\safe_iterator.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\debug\safe_iterator.tcc \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\profile\vector \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\profile\base.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\functional \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\tuple \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\array \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\stdexcept \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\debug\array \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\profile\array \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\bits\uses_allocator.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\profile\impl\profiler.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\profile\impl\profiler_hash_func.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\profile\impl\profiler_node.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\profile\impl\profiler_trace.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\unordered_map \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\bits\hashtable.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\bits\hashtable_policy.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\bits\unordered_map.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\debug\unordered_map \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\debug\safe_unordered_container.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\debug\safe_unordered_base.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\debug\safe_unordered_container.tcc \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\debug\safe_local_iterator.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\debug\safe_local_iterator.tcc \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\profile\unordered_map \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\profile\unordered_base.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\tr1\unordered_map \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\tr1\type_traits \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\tr1\functional_hash.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\tr1\hashtable.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\tr1\hashtable_policy.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\tr1\unordered_map.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\fstream \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\istream \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\ios \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\bits\ios_base.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\bits\locale_classes.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\bits\locale_classes.tcc \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\streambuf \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\bits\streambuf.tcc \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\bits\basic_ios.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\bits\locale_facets.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\cwctype \
+		..\..\..\..\..\..\Android\AndroidNDK\platforms\android-9\arch-arm\usr\include\wctype.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\libs\armeabi-v7a\include\bits\ctype_base.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\bits\streambuf_iterator.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\libs\armeabi-v7a\include\bits\ctype_inline.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\bits\locale_facets.tcc \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\bits\basic_ios.tcc \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\ostream \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\bits\ostream.tcc \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\bits\istream.tcc \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\bits\codecvt.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\libs\armeabi-v7a\include\bits\basic_file.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\libs\armeabi-v7a\include\bits\c++io.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\bits\fstream.tcc \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\profile\impl\profiler_algos.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\profile\impl\profiler_state.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\profile\impl\profiler_hashtable_size.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\profile\impl\profiler_container_size.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\sstream \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\bits\sstream.tcc \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\profile\impl\profiler_map_to_unordered_map.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\profile\impl\profiler_vector_size.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\profile\impl\profiler_vector_to_list.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\profile\impl\profiler_list_to_slist.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\profile\impl\profiler_list_to_vector.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\profile\iterator_tracker.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\bits\opt_random.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\bits\random.tcc \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\numeric \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\bits\stl_numeric.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\parallel\numeric \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\parallel\numericfwd.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\parallel\iterator.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\parallel\for_each.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\parallel\par_loop.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\parallel\omp_loop.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\parallel\workstealing.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\parallel\random_number.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\tr1\random \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\tr1\cmath \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\tr1\gamma.tcc \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\tr1\special_function_util.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\tr1\bessel_function.tcc \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\tr1\beta_function.tcc \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\tr1\ell_integral.tcc \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\tr1\exp_integral.tcc \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\tr1\hypergeometric.tcc \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\tr1\legendre_function.tcc \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\tr1\modified_bessel_func.tcc \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\tr1\poly_hermite.tcc \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\tr1\poly_laguerre.tcc \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\tr1\riemann_zeta.tcc \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\tr1\random.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\tr1\random.tcc \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\parallel\for_each_selectors.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\parallel\partial_sum.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\parallel\algorithm \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\parallel\algo.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\parallel\sort.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\parallel\checkers.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\parallel\multiway_mergesort.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\parallel\multiway_merge.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\parallel\losertree.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\parallel\multiseq_selection.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\queue \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\deque \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\bits\stl_deque.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\bits\deque.tcc \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\debug\deque \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\profile\deque \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\bits\stl_queue.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\parallel\quicksort.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\parallel\partition.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\parallel\balanced_quicksort.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\parallel\queue.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\parallel\omp_loop_static.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\parallel\search.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\parallel\random_shuffle.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\parallel\merge.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\parallel\unique_copy.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\parallel\set_operations.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qglobalstatic.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qatomic.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qbasicatomic.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qatomic_bootstrap.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qgenericatomic.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qatomic_msvc.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qatomic_integrity.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qoldbasicatomic.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qatomic_vxworks.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qatomic_power.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qatomic_alpha.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qatomic_armv7.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qatomic_armv6.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qatomic_armv5.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qatomic_bfin.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qatomic_ia64.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qatomic_mips.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qatomic_s390.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qatomic_sh4a.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qatomic_sparc.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qatomic_x86.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qatomic_cxx11.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\atomic \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\bits\atomic_base.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qatomic_gcc.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qatomic_unix.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qmutex.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qlogging.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qflags.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qtypeinfo.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qtypetraits.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qsysinfo.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qobjectdefs.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qnamespace.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qobjectdefs_impl.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtGui\qwindowdefs_win.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qrect.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qsize.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qpoint.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtGui\qcolor.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtGui\qrgb.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qstringlist.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qalgorithms.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qdatastream.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qscopedpointer.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qiodevice.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qobject.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qstring.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qchar.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qbytearray.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qrefcount.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qarraydata.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qstringbuilder.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qlist.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qiterator.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\iterator \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\bits\stream_iterator.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\list \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\bits\stl_list.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\bits\list.tcc \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\debug\list \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\profile\list \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qcoreevent.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qmetatype.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qvarlengtharray.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qcontainerfwd.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qisenum.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\map \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\bits\stl_tree.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\bits\stl_map.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\bits\stl_multimap.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\debug\map \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\debug\map.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\debug\multimap.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\profile\map \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\profile\map.h \
+		..\..\..\..\..\..\Android\AndroidNDK\sources\cxx-stl\gnu-libstdc++\4.8\include\profile\multimap.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qobject_impl.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qpair.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qregexp.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qstringmatcher.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qsharedpointer.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qshareddata.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qsharedpointer_impl.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qhash.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtGui\qimage.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtGui\qtransform.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtGui\qmatrix.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtGui\qpolygon.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qvector.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtGui\qregion.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qline.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtGui\qpainterpath.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtWidgets\QLabel \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtWidgets\qlabel.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtWidgets\qframe.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtWidgets\qwidget.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qmargins.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtGui\qpalette.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtGui\qbrush.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtGui\qfont.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtGui\qfontmetrics.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtGui\qfontinfo.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtWidgets\qsizepolicy.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtGui\qcursor.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtGui\qkeysequence.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtGui\qevent.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qvariant.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qmap.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qdebug.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qtextstream.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qlocale.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qset.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qcontiguouscache.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qurl.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qurlquery.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qfile.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qfiledevice.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtGui\qvector2d.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtGui\qtouchdevice.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtGui\QImage \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtGui\QTextImageFormat \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtGui\qtextformat.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtGui\qpen.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtGui\qtextoption.h \
+		..\Cook_Book_App\chocolate_chip_cookies_ing.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtWidgets\QDialog \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtWidgets\qdialog.h \
+		ui_chocolate_chip_cookies_ing.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\QVariant \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtWidgets\QAction \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtWidgets\qaction.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtGui\qicon.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtWidgets\qactiongroup.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtWidgets\QApplication \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtWidgets\qapplication.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qcoreapplication.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qeventloop.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtWidgets\qdesktopwidget.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtGui\qguiapplication.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtGui\qinputmethod.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtWidgets\QButtonGroup \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtWidgets\qbuttongroup.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtWidgets\QDialogButtonBox \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtWidgets\qdialogbuttonbox.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtWidgets\QHeaderView \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtWidgets\qheaderview.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtWidgets\qabstractitemview.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtWidgets\qabstractscrollarea.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qabstractitemmodel.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qitemselectionmodel.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtWidgets\qabstractitemdelegate.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtWidgets\qstyleoption.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtWidgets\qabstractspinbox.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtGui\qvalidator.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qregularexpression.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtWidgets\qslider.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtWidgets\qabstractslider.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtWidgets\qstyle.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtWidgets\qtabbar.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtWidgets\qtabwidget.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtWidgets\qrubberband.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtWidgets\QPushButton \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtWidgets\qpushbutton.h \
+		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtWidgets\qabstractbutton.h \
+		..\Cook_Book_App\chocolate_chip_cookies_stp1.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o chocolate_chip_cookies_ing.obj ..\Cook_Book_App\chocolate_chip_cookies_ing.cpp
+
+chocolate_chip_cookies_stp1.obj: ..\Cook_Book_App\chocolate_chip_cookies_stp1.cpp ..\Cook_Book_App\chocolate_chip_cookies_stp1.h \
 		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtWidgets\QDialog \
 		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtWidgets\qdialog.h \
 		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtWidgets\qwidget.h \
@@ -2535,50 +3422,20 @@ chocolate_chip_cookies.obj: ..\Cook_Book_App\chocolate_chip_cookies.cpp ..\Cook_
 		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qfiledevice.h \
 		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtGui\qvector2d.h \
 		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtGui\qtouchdevice.h \
-		ui_chocolate_chip_cookies.h \
-		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\QVariant \
-		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtWidgets\QAction \
-		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtWidgets\qaction.h \
-		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtGui\qicon.h \
-		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtWidgets\qactiongroup.h \
-		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtWidgets\QApplication \
-		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtWidgets\qapplication.h \
-		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qcoreapplication.h \
-		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qeventloop.h \
-		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtWidgets\qdesktopwidget.h \
-		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtGui\qguiapplication.h \
-		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtGui\qinputmethod.h \
-		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtWidgets\QButtonGroup \
-		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtWidgets\qbuttongroup.h \
-		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtWidgets\QDialogButtonBox \
-		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtWidgets\qdialogbuttonbox.h \
-		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtWidgets\QHeaderView \
-		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtWidgets\qheaderview.h \
-		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtWidgets\qabstractitemview.h \
-		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtWidgets\qabstractscrollarea.h \
-		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtWidgets\qframe.h \
-		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qabstractitemmodel.h \
-		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qitemselectionmodel.h \
-		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtWidgets\qabstractitemdelegate.h \
-		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtWidgets\qstyleoption.h \
-		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtWidgets\qabstractspinbox.h \
-		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtGui\qvalidator.h \
-		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtCore\qregularexpression.h \
-		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtWidgets\qslider.h \
-		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtWidgets\qabstractslider.h \
-		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtWidgets\qstyle.h \
-		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtWidgets\qtabbar.h \
-		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtWidgets\qtabwidget.h \
-		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtWidgets\qrubberband.h \
-		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtWidgets\QLabel \
-		..\..\..\..\..\..\Qt\5.2.1\android_armv7\include\QtWidgets\qlabel.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o chocolate_chip_cookies.obj ..\Cook_Book_App\chocolate_chip_cookies.cpp
+		ui_chocolate_chip_cookies_stp1.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o chocolate_chip_cookies_stp1.obj ..\Cook_Book_App\chocolate_chip_cookies_stp1.cpp
+
+qrc_pictures.obj: qrc_pictures.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o qrc_pictures.obj qrc_pictures.cpp
 
 moc_home_screen.obj: moc_home_screen.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_home_screen.obj moc_home_screen.cpp
 
-moc_chocolate_chip_cookies.obj: moc_chocolate_chip_cookies.cpp 
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_chocolate_chip_cookies.obj moc_chocolate_chip_cookies.cpp
+moc_chocolate_chip_cookies_ing.obj: moc_chocolate_chip_cookies_ing.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_chocolate_chip_cookies_ing.obj moc_chocolate_chip_cookies_ing.cpp
+
+moc_chocolate_chip_cookies_stp1.obj: moc_chocolate_chip_cookies_stp1.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_chocolate_chip_cookies_stp1.obj moc_chocolate_chip_cookies_stp1.cpp
 
 ####### Install
 
