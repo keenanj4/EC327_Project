@@ -9,7 +9,7 @@ using namespace std;
 
 
 int main(){
-	ifstream myfile1("num_files.txt");
+	ifstream myfile1("num_files.txt"); //IMPORTANT: need to make a file that has the initial number of recipe files.
 	float out;
 	myfile1 >> out;
 	// cout << out << endl;
