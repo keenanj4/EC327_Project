@@ -25,7 +25,7 @@ void new_recipe() {
 }
 
 int main(){
-	cout << "Enter 's' to select random recipe:";
+	cout << "Enter 's' to select random recipe or enter 'n' to make a new one:";
 	char start;
 	cin >> start;
 	if(start == 's'){
