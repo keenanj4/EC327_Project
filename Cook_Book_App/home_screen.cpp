@@ -1,6 +1,8 @@
 #include "home_screen.h"
 #include "ui_home_screen.h"
 #include "chocolate_chip_cookies_ing.h"
+#include "recipe1.h"
+
 Home_Screen::Home_Screen(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::Home_Screen)
@@ -15,7 +17,12 @@ Home_Screen::~Home_Screen()
 
 void Home_Screen::on_pushGenerate_clicked()
 {
-    Chocolate_Chip_Cookies chocolate_chip_cookies;
-    chocolate_chip_cookies.setModal(true);
-    chocolate_chip_cookies.exec();
+    // Call random number generator and assign the "recipe#" to a string.
+    // Then use the recipe# to generate the associated screen using...
+    // Recipe# recipescr;
+    // recipescr.setModal(true);
+    // recipescr.exec();
+    Recipe1 recipe1;
+    recipe1.setModal(true);
+    recipe1.exec();
 }
