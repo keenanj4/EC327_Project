@@ -17,3 +17,5 @@ Notes:
 -Comes preloaded with a number or random recipes (16 at the time of writing this). Ideally there would be many more, and more would be added with updates.
 -User can add new recipes of their own to the pool of randoms to personalize their cooking experience.
 
+Technologies:
+The code for the main functionality app was written in C++, and the user interface was designed using Qt. It was designed for Android phones, and as such, will have it function demonstrated on an Android phone.
