@@ -2,9 +2,7 @@ EC327_Project
 =============
 5/6/2014
 
-Jed Keenan										
-Samantha Velasquez
-Andrew Kvartek
+Jed Keenan, Samantha Velasquez, Andrew Kvartek
 
 Cookbook Randomizer App
 (Android App)
