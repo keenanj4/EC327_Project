@@ -31,7 +31,7 @@ int main(){
 		//find a way to count the files available
 		//or just have it keep guessing until it gets a hit
 		char filename[16];
-		sprintf(filename,"recipe%i.txt",rand()%number_of_files + 1);
+		sprintf(filename,"recipe%i",rand()%number_of_files + 1);
 		// cout<<filename<<endl;
 
 		ifstream myfile(filename);
@@ -50,7 +50,7 @@ int main(){
 
 
 		char filename2[16];
-		sprintf(filename2,"recipe%i.txt",number_of_files+1);
+		sprintf(filename2,"recipe%i",number_of_files+1);
 		
 		ofstream myfile(filename2);
 
