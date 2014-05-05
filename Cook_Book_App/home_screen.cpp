@@ -2,6 +2,13 @@
 #include "ui_home_screen.h"
 #include "chocolate_chip_cookies_ing.h"
 #include "recipe1.h"
+#include <iostream>
+#include <fstream>
+#include <cstdlib>
+#include <string>
+#include <time.h>
+
+using namespace std;
 
 Home_Screen::Home_Screen(QWidget *parent) :
     QMainWindow(parent),
@@ -22,7 +29,19 @@ void Home_Screen::on_pushGenerate_clicked()
     // Recipe# recipescr;
     // recipescr.setModal(true);
     // recipescr.exec();
-    Recipe1 recipe1;
-    recipe1.setModal(true);
-    recipe1.exec();
+    
+    
+    srand(time(NULL));
+    char filename[10];
+    number_of_files = 16;
+    sprintf(filename,"Recipe%i",rand()%number_of_files+1);
+
+    filename recipestr;
+    recipestr.setModal(true);
+    recipestr.exec();
+    
+    
+    // Recipe1 recipe1;
+    // recipe1.setModal(true);
+    // recipe1.exec();
 }
