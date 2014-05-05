@@ -11,7 +11,7 @@ void new_recipe() {
 	ofstream myfile ("recipe17.txt");
     string str;
 	cout << "Write your Recipe here." << endl;
-	cout << "Enter key when done. We'll fix this later" << endl;
+	cout << "Hit the Enter key when done." << endl;
 	//cin >> str;
 	cin.ignore();
     getline( std::cin, str );
