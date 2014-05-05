@@ -15,7 +15,6 @@ int main(){
 	if(start == 's'){
 		srand(time(NULL));
 		string line;
-		int k;
 		int number_of_files = 4;//this will not stay at 4
 		//find a way to count the files available
 		//or just have it keep guessing until it gets a hit
@@ -39,9 +38,12 @@ int main(){
 	return 0;
 }
 
-int new_recipe(){
+void new_recipe(){
 	int x = number_of_files + 1; //still need to be able to count files
-	ofstream myfile ("recipe%x.txt");
+	
+	sprintf(filename2,"recipe%i.txt",x)
+	
+	ofstream myfile (filename2);
 	string recipe;
 	cout << "Write your Recipe here." << endl;
 	cout << "Enter key when done. We'll fix this later" << endl;
