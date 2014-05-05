@@ -33,7 +33,7 @@ void Home_Screen::on_pushGenerate_clicked()
     
     srand(time(NULL));
     int number_of_files = 16;
-    k = rand()%number_of_files+1
+    int k = rand()%number_of_files+1;
     
     switch (k){
         case 1:
