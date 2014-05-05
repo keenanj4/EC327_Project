@@ -4,7 +4,7 @@
 #include <time.h>
 
 using namespace std;
-int number_of_files = 0;
+int number_of_files = 16;
 
 void new_recipe() {
 	int x = number_of_files + 1; //still need to be able to count files
