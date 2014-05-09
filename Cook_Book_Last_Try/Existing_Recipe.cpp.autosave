@@ -1,0 +1,21 @@
+#include <QtCore>
+#include <QFile>
+#include <QString>
+#include <QLabel>
+#include <QPushButton>
+#include <QTextStream>
+
+void Write(QString Filename)
+{
+    QFile mFile(Filename);
+    
+    QTextStream out(&mFile);
+    out<<
+}
+
+void Read (QString Filename)
+{
+    
+}
+
+

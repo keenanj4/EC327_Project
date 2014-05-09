@@ -1,5 +1,6 @@
 <RCC>
     <qresource prefix="/pictures">
         <file>Chocolate_Chip_Cookies.jpg</file>
+        <file>chickencover.jpg</file>
     </qresource>
 </RCC>

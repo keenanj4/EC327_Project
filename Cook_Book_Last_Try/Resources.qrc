@@ -1,0 +1,21 @@
+<RCC>
+    <qresource prefix="/images"/>
+    <qresource prefix="/recipes">
+        <file>Recipe1.txt</file>
+        <file>Recipe2.txt</file>
+        <file>Recipe3.txt</file>
+        <file>Recipe4.txt</file>
+        <file>Recipe5.txt</file>
+        <file>Recipe6.txt</file>
+        <file>Recipe7.txt</file>
+        <file>Recipe8.txt</file>
+        <file>Recipe9.txt</file>
+        <file>Recipe10.txt</file>
+        <file>Recipe11.txt</file>
+        <file>Recipe12.txt</file>
+        <file>Recipe13.txt</file>
+        <file>Recipe14.txt</file>
+        <file>Recipe15.txt</file>
+        <file>Recipe16.txt</file>
+    </qresource>
+</RCC>

@@ -14,26 +14,23 @@ TEMPLATE = app
 
 SOURCES +=\
         home_screen.cpp \
-    chocolate_chip_cookies_ing.cpp \
-    chocolate_chip_cookies_stp1.cpp \
     main.cpp \
     recipe1.cpp \
-    default_new_recipe.cpp \
-    recipe1_dir.cpp
+    recipe1_dir.cpp \
+    recipe2.cpp \
+    recipe2_dir.cpp
 
 HEADERS  += home_screen.h \
-    chocolate_chip_cookies_ing.h \
-    chocolate_chip_cookies_stp1.h \
     recipe1.h \
-    default_new_recipe.h \
-    recipe1_dir.h
+    recipe1_dir.h \
+    recipe2.h \
+    recipe2_dir.h
 
 FORMS    += home_screen.ui \
-    chocolate_chip_cookies_ing.ui \
-    chocolate_chip_cookies_stp1.ui \
     recipe1.ui \
-    default_new_recipe.ui \
-    recipe1_dir.ui
+    recipe1_dir.ui \
+    recipe2_dir.ui \
+    recipe2.ui
 
 CONFIG += mobility
 MOBILITY = 
